@@ -1,0 +1,21 @@
+// file main.scss -> chỉ để liên kết các file scss nhỏ thành 1 file scss lớn qua cú pháp @import
+//helpers
+@import "./helpers/mixins";
+
+//base
+@import "./base/reset";
+
+//theme
+@import "./themes/light";
+@import "./themes/dark";
+
+//components
+@import "./components/header";
+@import "./components/footer";
+@import "./components/carousel";
+@import "./components/featured";
+@import "./components/toast";
+
+//pages
+@import "./pages/cart";
+@import "./pages/adminPage";

@@ -1,0 +1,221 @@
+#cart {
+  background: var(--bg-feature);
+
+  h1 {
+    color: var(--color-blue-1);
+  }
+
+
+
+  .cartTitleBottom {
+    span {
+      color: var(--color-dark-1);
+    }
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  td {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  .cartBody {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+
+    .tableBlock {
+      width: 70%;
+      margin-top: 20px;
+
+      .table {
+        width: 100%;
+        margin-bottom: 16px;
+        color: #212529;
+
+        th,
+        td {
+          text-align: center;
+          padding: 12px;
+          vertical-align: middle;
+          border-top: 1px solid #dee2e6;
+          color: var(--color-blue-1);
+          background: var(--color-white-1);
+        }
+
+        td {
+          i {
+            cursor: pointer;
+          }
+        }
+
+        thead th {
+          color: var(--color-blue-1);
+          vertical-align: middle;
+          border-bottom: 2px solid #dee2e6;
+          background-color: var(--color-white-1);
+        }
+
+        tbody + tbody {
+          border-top: 2px solid #dee2e6;
+        }
+
+        img {
+          max-width: 100px;
+        }
+
+        .btn-change-quantity {
+          @include button(
+            0px,
+            10px,
+            var(--color-white-1),
+            var(--color-blue-2),
+            var(--color-blue-2)
+          );
+          box-shadow: 2px 2px 4px var(--color-white-2),
+            -2px -2px 4px var(--color-white-3);
+          border-radius: 4px !important;
+          font-size: 20px;
+          &:hover {
+            box-shadow: inset 1px 1px 3px var(--color-white-2),
+              inset -2px -2px 5px var(--color-white-3);
+          }
+        }
+
+        .btn-change-quantity-dark {
+          @include button(
+            0px,
+            10px,
+            var(--color-white-1),
+            var(--color-blue-2),
+            transparent
+          );
+          box-shadow: none;
+          border-radius: 4px !important;
+          font-size: 20px;
+          border: 2px solid;
+          &:hover {
+            box-shadow: none;
+            color: var(--color-white-3);
+            background: var(--color-blue-2);
+            border-color: transparent;
+          }
+        }
+      }
+    }
+
+    .blockPayment {
+      width: 30%;
+      display: flex;
+      gap: 30px;
+      flex-direction: column;
+      height: 250px;
+      background: var(--color-white-1);
+      padding: 20px;
+      border-radius: 8px;
+
+      h2 {
+        text-align: center;
+        color: var(--color-blue-1);
+        font-weight: var(--fw-3);
+      }
+
+      .totalBlock {
+        display: flex;
+        justify-content: space-between;
+        color: var(--color-blue-1);
+        font-weight: var(--fw-2);
+      }
+
+      .btn-payment {
+        @include button(
+          8px,
+          20px,
+          var(--color-white-1),
+          var(--color-blue-2),
+          transparent
+        );
+        box-shadow: 2px 2px 4px var(--color-white-2),
+          -2px -2px 4px var(--color-white-3);
+        border-radius: 4px !important;
+        &:hover {
+          box-shadow: inset 1px 1px 3px var(--color-white-2),
+            inset -2px -2px 5px var(--color-white-3);
+        }
+      }
+
+      .btn-payment-dark {
+        @include button(
+          8px,
+          20px,
+          var(--color-white-1),
+          var(--color-blue-2),
+          transparent
+        );
+        box-shadow: none;
+        border-radius: 4px !important;
+
+        border: 2px solid;
+        &:hover {
+          box-shadow: none;
+          color: var(--color-white-3);
+          background: var(--color-blue-2);
+          border-color: transparent;
+        }
+      }
+    }
+  }
+}
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.confirmation-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 1001;
+}
+
+.modal-content {
+  text-align: center;
+}
+
+.modal-buttons button {
+  margin: 0 10px;
+}
+
+#confirmButton {
+  padding: 10px 20px;
+  min-width: 150px;
+  background: green;
+}
+
+#cancelButton {
+  padding: 10px 20px;
+  background: red;
+  min-width: 150px;
+}

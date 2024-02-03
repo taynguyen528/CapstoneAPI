@@ -1,0 +1,25 @@
+@import "../helpers/variables";
+
+// html[data-theme="dark"] {
+//   --primary-test: red;
+// }
+
+html.dark {
+  --color-blue-1: #2196f3;
+  --bg-feature: #000;
+  --bg-img: transparent;
+  --color-white-1: #212121;
+  --color-dark-1: #fff;
+  --header-color: #fff;
+
+  @media (prefers-color-scheme: dark) {
+    header {
+      box-shadow: none;
+      background-color: #353536 !important;
+    }
+
+    #fa-bars {
+      color: #2196f3;
+    }
+  }
+}

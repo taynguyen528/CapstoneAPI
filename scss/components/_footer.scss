@@ -1,0 +1,33 @@
+#footer {
+  background-color: var(--color-blue-2);
+  padding-bottom: 60px;
+  .footerLeft {
+    color: #fff;
+  }
+  .footerContent {
+    display: flex;
+    justify-content: space-between;
+
+    .footerRight {
+      display: inline-block;
+      ul {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 0 !important;
+
+        a {
+          color: var(--color-white-3);
+          font-weight: var(--fw-1);
+        }
+      }
+    }
+  }
+
+  .footer__light {
+    display: block;
+  }
+
+  img {
+    margin-bottom: 60px;
+  }
+}

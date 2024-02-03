@@ -1,0 +1,86 @@
+@import "../helpers/variables";
+#carousel {
+  height: 100vh;
+  position: relative;
+  background-image: url(../img/product-header-bg.jpg);
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @media screen and (max-width: 768px) {
+    .carousel-img {
+      display: none;
+    }
+  }
+  .content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .carousel-content {
+    .title {
+      color: var(--color-blue-1);
+      font-size: var(--fs-4);
+      font-weight: var(--fw-3);
+      margin-bottom: 7px;
+    }
+
+    .subTitle {
+      color: var(--color-blue-1);
+      font-size: var(--fs-5);
+      font-weight: var(--fw-2);
+      letter-spacing: var(--ls-1);
+      margin-bottom: 30px;
+    }
+
+    .desc {
+      color: var(--color-dark-1);
+      font-size: var(--fs-2);
+      font-weight: var(--fw-1);
+      margin-bottom: 25px;
+    }
+  }
+
+  .group-act {
+    display: inline-flex;
+    gap: 30px;
+
+    .btn-info {
+      @include button(
+        14px,
+        44px,
+        transparent,
+        var(--color-blue-2),
+        var(--color-blue-2)
+      );
+      display: flex;
+      gap: 8px;
+      align-items: center;
+
+      &:hover {
+        background: var(--color-blue-2);
+        color: var(--color-white-3);
+      }
+    }
+
+    .btn-shop {
+      @include button(
+        15px,
+        46px,
+        linear-gradient(120deg, #60a4f4, #2a73dd),
+        var(--color-white-3),
+        transparent
+      );
+
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      border: none;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+}

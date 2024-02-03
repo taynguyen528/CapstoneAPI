@@ -1,0 +1,116 @@
+$color_1: #333;
+$color_2: #888;
+$color_3: rgba(0, 0, 0, 0.3);
+$color_4: #47d864;
+$color_6: #2f86eb;
+$color_7: #ff623d;
+$background-color_1: #fff;
+$border-color_1: #47d864;
+$border-color_3: #2f86eb;
+$border-color_4: #ff623d;
+
+/* Tạo keyframes để tạo hiệu ứng trượt */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(calc(100% + 32px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+#toast {
+  top: 32px;
+  right: 32px;
+  position: fixed;
+  z-index: 99999999;
+}
+.toast {
+  display: flex;
+  align-items: center;
+  background-color: $background-color_1;
+  border-radius: 2px;
+  border-left: 4px solid;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+  min-width: 400px;
+  max-width: 450px;
+  transform: translateX(calc(100% + 32px));
+  transition: all linear 0.3s;
+  + {
+    .toast {
+      margin-top: 24px;
+    }
+  }
+}
+.toast__icon {
+  font-size: 24px;
+  padding: 0 16px;
+}
+.toast__close {
+  padding: 0 16px;
+  font-size: 20px;
+  color: $color_3;
+  cursor: pointer;
+  transition: 0.5s all;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+.toast__body {
+  flex-grow: 1;
+}
+.toast__title {
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  color: $color_1;
+}
+.toast__msg {
+  margin-top: 6px;
+  font-size: 14px;
+  color: $color_2;
+  line-height: 1.5;
+}
+.toast--success {
+  border-color: $border-color_1;
+  .toast__icon {
+    color: $color_4;
+  }
+}
+.toast--info {
+  border-color: $border-color_3;
+  .toast__icon {
+    color: $color_6;
+  }
+}
+.toast--error {
+  border-color: $border-color_4;
+  .toast__icon {
+    color: $color_7;
+  }
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+button {
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+}
+.success {
+  background: #47d864;
+}
+.error {
+  background: #ff623d;
+}
+.info {
+  background: #2f86eb;
+}
