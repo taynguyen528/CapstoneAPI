@@ -15,4 +15,35 @@ function Services() {
       method: "delete",
     });
   };
+
+  this.addProduct = (data) => {
+    return axios({
+      url: this.baseUrl,
+      method: "post",
+      data: data,
+    });
+  };
+
+  this.getProductDetailById = function (id) {
+    return axios({
+      url: `${this.baseUrl}/${id}`,
+      method: "get",
+    });
+  };
+
+  this.editProduct = (id, data) => {
+    return axios({
+      url: `${this.baseUrl}/${id}`,
+      method: "update",
+      data: data,
+    });
+  };
+
+  this.updateProduct = function (id, data) {
+    return axios({
+      url: `${this.baseUrl}/${id}`,
+      method: "put",
+      data: data,
+    });
+  };
 }

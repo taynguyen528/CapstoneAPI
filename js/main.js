@@ -48,13 +48,6 @@ function getProductList() {
   //call api
 
   var promise = service.getList();
-  // promise
-  //   .then(function (data) {
-  //     console.log(data);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
 
   //.then để nhận trường hợp lấy data thành công
   //.catch để nhận trường hợp lấy data thất bại

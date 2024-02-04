@@ -121,7 +121,8 @@
 
     <div id="overlay" class="overlay"></div>
     <div id="wrapForm">
-      <h2 class="mb-4">Form Add Product</h2>
+      <h2 class="mb-4" id="titleAddFormModal">Form Add Product</h2>
+      <h2 class="mb-4" id="titleEditFormModal">Form Edit Product</h2>
       <div class="row">
         <div class="col-md-6">
           <div class="mb-3">
@@ -180,7 +181,16 @@
           </div>
         </div>
       </div>
-      <button class="btn btn-primary mt-4">Add Product</button>
+      <button
+        class="btn btn-primary mt-4"
+        id="btnAddProductModal"
+        onclick="addProduct()"
+      >
+        Add Product
+      </button>
+      <button class="btn btn-success mt-4" id="btnEditProductModal">
+        Edit Product
+      </button>
     </div>
 
     <div id="confirmationModal" class="confirmation-modal">
@@ -208,10 +218,7 @@
           <div class="footerLeft">© 2021</div>
           <div class="footerRight">
             <ul>
-              <a href="#carousel"><li>Home</li></a>
-              <a href="#carousel"><li>Shop</li></a>
-              <a href="#carousel"><li>Blog</li></a>
-              <a href="#carousel"><li>Contact</li></a>
+              <a href="./index.html"><li>Home</li></a>
             </ul>
           </div>
         </div>

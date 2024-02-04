@@ -66,3 +66,12 @@ function showWarningToast() {
 function showSuccessDeleteToast() {
   toast("Thành công", "Đã xóa thành công sản phẩm.", "success", 5000);
 }
+
+function showSuccessAddProductToast() {
+  toast("Thành công", "Đã thêm sản phẩm thành công.", "success", 5000);
+}
+
+function showSuccessEditProductToast() {
+  toast("Thành công", "Đã chỉnh sửa thông tin sản phẩm thành công.", "success", 5000);
+}
+
