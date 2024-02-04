@@ -171,6 +171,8 @@ document.addEventListener("DOMContentLoaded", function () {
     overlay.style.display = "block";
     wrapForm.style.display = "block";
 
+    getElement("productName").disabled = false;
+
     getElement("btnEditProductModal").style.display = "none";
     getElement("titleEditFormModal").style.display = "none";
 
