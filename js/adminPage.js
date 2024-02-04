@@ -3,7 +3,8 @@ function getElement(id) {
 }
 
 var services = new Services();
-
+var validation = new Validation();
+var productListData;
 function getProductListAdminPage() {
   //call api
   var promise = services.getList();
@@ -13,6 +14,7 @@ function getProductListAdminPage() {
       //data.data là productList(tham số truyền vào hàm renderTable)
       //Gọi hàm render để hiển thị product list ra UI
       renderTableAdminPage(data.data);
+      productListData = data.data;
     })
     .catch(function (error) {
       console.log("error: ", error);
@@ -71,6 +73,79 @@ function renderTableAdminPage(productList) {
     `;
   }
   getElement("tbodyAdminPage").innerHTML = htmlContentAdminPage;
+}
+
+function getInfoProduct() {
+  var name = getElement("productName").value;
+  var price = getElement("productPrice").value;
+  var img = getElement("productImage").value;
+  var screen = getElement("productScreen").value;
+  var blackCamera = getElement("productBlackCamera").value;
+  var frontCamera = getElement("productFrontCamera").value;
+  var desc = getElement("productDescription").value;
+  var dropdown = getElement("productType");
+  var selectedIndex = dropdown.selectedIndex;
+  var selectedValue = dropdown.options[selectedIndex].value;
+
+  return new Product(
+    name,
+    price,
+    screen,
+    blackCamera,
+    frontCamera,
+    img,
+    desc,
+    selectedValue
+  );
+}
+
+function check() {
+  var product = getInfoProduct();
+  var isValid = true;
+
+  isValid &=
+    validation.kiemTraRong(
+      product.name,
+      "tbName",
+      "Tên sản phẩm không được để trống!"
+    ) &&
+    validation.kiemTraRong(
+      product.img,
+      "tbImg",
+      "URL của sản phẩm không được để trống!"
+    ) &&
+    validation.kiemTraRong(
+      product.price,
+      "tbPrice",
+      "Giá sản phẩm không được để trống!"
+    ) &&
+    validation.kiemTraRong(
+      product.screen,
+      "tbScreen",
+      "Screen của sản phẩm không được để trống!"
+    ) &&
+    validation.kiemTraRong(
+      product.blackCamera,
+      "tbBlackCamera",
+      "BlackCamera của sản phẩm không được để trống!"
+    ) &&
+    validation.kiemTraRong(
+      product.frontCamera,
+      "tbFrontCamera",
+      "FrontCamera của sản phẩm không được để trống!"
+    ) &&
+    validation.kiemTraRong(
+      product.desc,
+      "tbDesc",
+      "Mô tả của sản phẩm không được để trống!"
+    );
+
+  isValid &= validation.kiemTraAm(
+    product.price,
+    "tbPrice",
+    "Giá sản phẩm phải lớn hơn 0!"
+  );
+  return isValid;
 }
 
 function deleteProduct(productID) {
@@ -132,47 +207,28 @@ cancelButton.addEventListener("click", function () {
   confirmationModal.style.display = "none";
 });
 
-function getInfoProduct() {
-  var name = getElement("productName").value;
-  var price = getElement("productPrice").value;
-  var img = getElement("productImage").value;
-  var screen = getElement("productScreen").value;
-  var blackCamera = getElement("productBlackCamera").value;
-  var frontCamera = getElement("productFrontCamera").value;
-  var desc = getElement("productDescription").value;
-  var dropdown = getElement("productType");
-  var selectedIndex = dropdown.selectedIndex;
-  var selectedValue = dropdown.options[selectedIndex].value;
-
-  return new Product(
-    name,
-    price,
-    screen,
-    blackCamera,
-    frontCamera,
-    img,
-    desc,
-    selectedValue
-  );
-}
-
 function addProduct() {
-  var product = getInfoProduct();
-  console.log(product);
+  var checkValidation = check();
+  console.log("check: ", checkValidation);
+  if (checkValidation) {
+    var product = getInfoProduct();
 
-  var promise = services.addProduct(product);
+    var promise = services.addProduct(product);
 
-  promise
-    .then((data) => {
-      getProductListAdminPage();
-      showSuccessAddProductToast();
-      getElement("wrapForm").style.display = "none";
-      getElement("overlay").style.display = "none";
-      resetModal();
-    })
-    .catch((error) => {
-      console.log("error: ", error);
-    });
+    promise
+      .then((data) => {
+        getProductListAdminPage();
+        showSuccessAddProductToast();
+        getElement("wrapForm").style.display = "none";
+        getElement("overlay").style.display = "none";
+        resetModal();
+      })
+      .catch((error) => {
+        console.log("error: ", error);
+      });
+  } else {
+    return;
+  }
 }
 
 function resetModal() {
@@ -230,9 +286,39 @@ getElement("btnEditProductModal").addEventListener("click", function () {
       showSuccessEditProductToast();
       getElement("wrapForm").style.display = "none";
       getElement("overlay").style.display = "none";
-      // resetModal();
     })
     .catch((error) => {
       console.log(error);
     });
 });
+
+function searchProductByName() {
+  var searchInput = getElement("searchProductName").value.toLowerCase();
+  var filteredList = [];
+
+  for (var i = 0; i < productListData.length; i++) {
+    if (productListData[i].name.toLowerCase().includes(searchInput)) {
+      filteredList.push(productListData[i]);
+    }
+  }
+  renderTableAdminPage(filteredList);
+}
+
+var sortDefault = true; // mặc định  từ bé đến lớn
+
+function sortProductsByPrice() {
+  sortDefault = !sortDefault;
+
+  productListData.sort(function (a, b) {
+    var a = parseFloat(a.price);
+    var b = parseFloat(b.price);
+
+    if (sortDefault) {
+      return a - b;
+    } else {
+      return b - a;
+    }
+  });
+
+  renderTableAdminPage(productListData);
+}

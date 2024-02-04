@@ -1,6 +1,28 @@
 #adminPage {
   background: var(--bg-feature);
 
+  .wrapAction {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    .blockSearch {
+      width: 60%;
+      #searchProductName {
+        padding: 5px 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        width: 70%;
+        margin-right: 30px;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
   h1 {
     color: var(--color-blue-1);
     text-align: center;
@@ -128,5 +150,8 @@
   button {
     display: block;
     margin: 0 auto;
+  }
+  span {
+    color: red;
   }
 }

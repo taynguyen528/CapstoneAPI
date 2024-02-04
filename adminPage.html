@@ -88,13 +88,30 @@
         </div>
       </nav>
     </header>
-    <div id="adminPage" style="padding-top: 100px">
+    <div id="adminPage" style="padding: 100px 0 150px">
       <div class="container" style="padding: 50px 0">
         <h1>AdminPage</h1>
         <button class="btnAddProduct">
           <i class="fa-solid fa-plus"></i>
           Add Products
         </button>
+        <div class="wrapAction">
+          <div class="blockSearch">
+            <input
+              type="text"
+              id="searchProductName"
+              placeholder="Enter product name..."
+            />
+            <button class="btn btn-info" onclick="searchProductByName()">
+              Search
+            </button>
+          </div>
+          <div class="blockSort">
+            <button class="btn btn-warning" onclick="sortProductsByPrice()">
+              Sort by Price
+            </button>
+          </div>
+        </div>
 
         <div id="toast"></div>
         <div class="tableAdminPage" style="margin-top: 20px">
@@ -228,7 +245,7 @@
     <!-- JS -->
     <script src="./services/Services.js"></script>
     <script src="./models/Product.js"></script>
-
+    <script src="./models/Validation.js"></script>
     <script src="./js/toast.js"></script>
     <script src="./js/adminPage.js"></script>
     <script src="./js/cart.js"></script>

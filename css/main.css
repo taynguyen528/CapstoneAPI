@@ -883,6 +883,26 @@ button {
 #adminPage {
   background: var(--bg-feature);
 }
+#adminPage .wrapAction {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+#adminPage .wrapAction .blockSearch {
+  width: 60%;
+}
+#adminPage .wrapAction .blockSearch #searchProductName {
+  padding: 5px 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 70%;
+  margin-right: 30px;
+}
+#adminPage .wrapAction .blockSearch #searchProductName:focus {
+  outline: none;
+}
 #adminPage h1 {
   color: var(--color-blue-1);
   text-align: center;
@@ -995,4 +1015,7 @@ button {
 #wrapForm button {
   display: block;
   margin: 0 auto;
+}
+#wrapForm span {
+  color: red;
 }/*# sourceMappingURL=main.css.map */
