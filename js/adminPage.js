@@ -247,6 +247,8 @@ function btnEdit(id) {
   getElement("wrapForm").style.display = "block";
   getElement("overlay").style.display = "block";
 
+  getElement("productName").disabled = true;
+
   var promise = services.getProductDetailById(id);
   idProductEdit = id;
   promise
